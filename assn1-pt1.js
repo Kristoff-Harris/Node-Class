@@ -19,11 +19,24 @@ function lookupByLastName(currLastName){
 }
 
 function updateById(currId, fName, lName){
+    _.each(data, function(item){
+       if(item.id === currId){
+           item.firstName = fName;
+           item.lastName = lName;
+       }
+    });
+}
 
+function getIds(currDataSet){
+    return _.pluck(currDataSet, 'id');
+}
+
+function getFirstNames(currDataSet){
+    return _.pluck(currDataSet, 'firstName');
 }
 
 function getLastNames(currDataSet){
-    _.pluck(currDataSet, lastName)
+    return _.pluck(currDataSet, 'lastName');
 }
 
 function addEmployee(fName, lName){
@@ -46,3 +59,6 @@ console.log(lookupByLastName("Smith"));
 console.log(lookupByLastName("Coffas"));
 console.log(addEmployee('William', 'Smith'));
 console.log(lookupByLastName("Harris"));
+console.log(getLastNames(data));
+updateById(2, 'Lisa', 'Smith');
+console.log(data);
